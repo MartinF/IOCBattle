@@ -5,7 +5,7 @@ namespace IocBattle.Benchmark.Tests
 {
 	public class DynamoContainer : IContainer
 	{
-		private Dynamo.IocContainer.Container _container;
+		private Container _container;
 
 		public string Name
 		{
@@ -26,7 +26,7 @@ namespace IocBattle.Benchmark.Tests
 
 		public void SetupForSingletonTest()
 		{
-			_container = new Container(defaultLifetime: Lifetime.Container);
+			_container = new Container(Lifetime.Container);
 			Setup(_container);
 		}
 
@@ -49,7 +49,7 @@ namespace IocBattle.Benchmark.Tests
 
 			container.Register<ILogger>(c => new Logger());
 
-			_container.Optimize();
+			_container.Compile();
 		}
 	}
 }

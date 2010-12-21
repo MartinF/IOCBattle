@@ -9,9 +9,9 @@ namespace IocBattle.Benchmark
 		{
 			var containers = new IContainer[]
 			                 {
-									new NewContainer(),
+			                 	new NewContainer(),
 
-									new DynamoAutoContainer(),
+			                 	new DynamoAutoContainer(),
 
 									new AutoFacLambdaContainer(),
 									
