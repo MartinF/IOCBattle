@@ -50,6 +50,7 @@ namespace IocBattle.Benchmark.Tests
 			container.Register<ILogger>(c => new Logger());
 
 			_container.Compile();
+			_container.Verify();
 		}
 	}
 }
