@@ -1,4 +1,4 @@
-﻿using Dynamo.IocContainer;
+﻿using Dynamo.Ioc;
 using IocBattle.Benchmark.Models;
 
 namespace IocBattle.Benchmark.Tests

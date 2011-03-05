@@ -95,9 +95,8 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.2.5.1\lib\NET40\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Dynamo.IocContainer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Dynamo\Dynamo.IocContainer.dll</HintPath>
+    <Reference Include="Dynamo.Ioc">
+      <HintPath>..\References\Dynamo\Dynamo.Ioc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\Unity.2.0\lib\20\Microsoft.Practices.ServiceLocation.dll</HintPath>
