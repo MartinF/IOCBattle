@@ -49,8 +49,8 @@ namespace IocBattle.Benchmark
 
 			resolveTimer.Stop();
 
-			Console.WriteLine("{0}: - {1} - Registartion time: \t{2}s", _container.Name, mode, regTimer.Elapsed.TotalSeconds);
-			Console.WriteLine("{0}: - {1} - Component resolve time: \t{2}s", _container.Name, mode, resolveTimer.Elapsed.TotalSeconds);
+			Console.WriteLine("{0}: - {1} - Registartion time: \t{2}ms", _container.Name, mode, regTimer.Elapsed.TotalMilliseconds);
+            Console.WriteLine("{0}: - {1} - Component resolve time: \t{2}ms", _container.Name, mode, resolveTimer.Elapsed.TotalMilliseconds);
 		}
 	}
 }
