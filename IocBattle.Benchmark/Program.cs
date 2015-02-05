@@ -1,37 +1,37 @@
-﻿using System;
-using IocBattle.Benchmark.Tests;
+﻿using IocBattle.Benchmark.Tests;
+using System;
 
 namespace IocBattle.Benchmark
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			var containers = new IContainer[]
-			                 {
-			                 	new NewContainer(),
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            var containers = new IContainer[]
+            {
+                new NewContainer(),
 
-			                 	new DynamoAutoContainer(),
+                new DynamoAutoContainer(),
 
-									new AutoFacLambdaContainer(),
-									
-									new AutoFacContainer(),
+                new AutoFacLambdaContainer(),
 
-									new StructureMapContainer(),
+                new AutoFacContainer(),
 
-			                 	new UnityContainer(),
+                new StructureMapContainer(),
 
-									new NinjectContainer(),
+                new UnityContainer(),
 
-									new WindsorContainer(),
-			                 };
+                new NinjectContainer(),
 
-			foreach (var container in containers)
-			{
-				(new BenchEngine(container)).Start();
-			}
+                new WindsorContainer(),
+            };
 
-			Console.Read();
-		}
-	}
+            foreach (var container in containers)
+            {
+                (new BenchEngine(container)).Start();
+            }
+
+            Console.Read();
+        }
+    }
 }
