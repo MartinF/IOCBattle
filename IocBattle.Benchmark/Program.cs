@@ -19,6 +19,8 @@ namespace IocBattle.Benchmark
 
 									new StructureMapContainer(),
 
+                                    new SimpleInjectorContainer(), 
+
 			                 	new UnityContainer(),
 
 									new NinjectContainer(),
