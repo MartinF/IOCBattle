@@ -633,6 +633,25 @@
             Is this container the root, a profile or child, or a nested container?
             </summary>
         </member>
+        <member name="T:StructureMap.Graph.IFamilyPolicy">
+            <summary>
+            Allows StructureMap to fill in missing registrations by unknown plugin types
+            at runtime
+            </summary>
+        </member>
+        <member name="M:StructureMap.Graph.IFamilyPolicy.Build(System.Type)">
+            <summary>
+            Allows you to create missing registrations for an unknown plugin type
+            at runtime.
+            Return null if this policy does not apply to the given type
+            </summary>
+        </member>
+        <member name="P:StructureMap.Graph.IFamilyPolicy.AppliesToHasFamilyChecks">
+            <summary>
+            Should this policy be used to determine whether or not the Container has
+            registrations for a plugin type in the PluginGraph.HasFamily(type) method
+            </summary>
+        </member>
         <member name="M:StructureMap.AutoMocking.IAutoMocker`1.UseMockForType``1">
             <summary>
             Forces the auto mocking container to use a mock object
@@ -2407,6 +2426,12 @@
             Specifies interception, construction selection, and setter usage policies
             </summary>
         </member>
+        <member name="F:StructureMap.Graph.PluginGraph.ConnectedConcretions">
+            <summary>
+            Holds a cache of concrete types that can be considered for closing generic interface
+            types
+            </summary>
+        </member>
         <member name="M:StructureMap.Graph.PluginGraph.Profile(System.String)">
             <summary>
             Fetch the PluginGraph for the named profile.  Will
@@ -2518,11 +2543,6 @@
             <summary>
             The top most PluginGraph.  If this is the root, will return itself.
             If a Profiled PluginGraph, returns its ultimate parent
-            </summary>
-        </member>
-        <member name="T:StructureMap.Graph.TypePath">
-            <summary>
-            Designates a CLR type that is loaded by name.
             </summary>
         </member>
         <member name="M:StructureMap.IInitializationExpression.AddRegistry``1">
@@ -2835,6 +2855,11 @@
         <member name="P:StructureMap.Pipeline.ConstructorInstance`1.Constructor">
             <summary>
             Explicitly select a constructor
+            </summary>
+        </member>
+        <member name="T:StructureMap.Pipeline.ContainerLifecycle">
+            <summary>
+            "Singleton" for a specific child container or profile container
             </summary>
         </member>
         <member name="T:StructureMap.Pipeline.DependencyCollection">

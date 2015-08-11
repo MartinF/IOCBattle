@@ -23,7 +23,7 @@ namespace IocBattle.Benchmark
 
                 new NinjectContainer(),
 
-                new WindsorContainer(),
+                new WindsorContainer()
             };
 
             foreach (var container in containers)
