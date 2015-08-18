@@ -22,8 +22,6 @@ namespace IocBattle.Benchmark.Tests
 
 			ObjectFactory.Initialize(x =>
 											 {
-												 x.UseDefaultStructureMapConfigFile = false;
-
 												 x.For<IRepository>().Use<Repository>();
 												 x.For<IAuthenticationService>().Use<AuthenticationService>();
 												 x.For<UserController>().Use<UserController>();
@@ -49,8 +47,6 @@ namespace IocBattle.Benchmark.Tests
 
 			ObjectFactory.Initialize(x =>
 			{
-				x.UseDefaultStructureMapConfigFile = false;
-
 				x.For<IRepository>().Singleton().Use<Repository>();
 				x.For<IAuthenticationService>().Singleton().Use<AuthenticationService>();
 				x.For<UserController>().Singleton().Use<UserController>();

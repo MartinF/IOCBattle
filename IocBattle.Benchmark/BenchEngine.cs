@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Threading;
 using IocBattle.Benchmark.Models;
+using System.Collections.Generic;
 
 namespace IocBattle.Benchmark
 {
@@ -14,24 +16,29 @@ namespace IocBattle.Benchmark
 			_container = container;
 		}
 
-		public void Start()
+		public List<Result> Start()
 		{
+			List<Result> results = new List<Result>();
+
+			Result ret = null;
 			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
 			GC.WaitForPendingFinalizers();
 			// Thread.Sleep(1000);
 
-			RunBenchmark(_container.SetupForSingletonTest, "Singleton");
+			ret = RunBenchmark( _container.SetupForSingletonTest, "Singleton" );
 
 			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
 			GC.WaitForPendingFinalizers();
+			results.Add( ret );
 			// Thread.Sleep(1000);
 
-			RunBenchmark(_container.SetupForTransientTest, "Transient");
+			ret = RunBenchmark(_container.SetupForTransientTest, "Transient");
+			results.Add( ret );
 
-			Console.WriteLine("");
+			return results;
 		}
 
-		private void RunBenchmark(Action setupAction, string mode)
+		private Result RunBenchmark(Action setupAction, string mode)
 		{
 			var regTimer = new Stopwatch();
 			var resolveTimer = new Stopwatch();
@@ -49,8 +56,13 @@ namespace IocBattle.Benchmark
 
 			resolveTimer.Stop();
 
-			Console.WriteLine("{0}: - {1} - Registartion time: \t{2}s", _container.Name, mode, regTimer.Elapsed.TotalSeconds);
-			Console.WriteLine("{0}: - {1} - Component resolve time: \t{2}s", _container.Name, mode, resolveTimer.Elapsed.TotalSeconds);
+			return new Result
+				{
+					Name = _container.Name,
+					Mode = mode,
+					RegisterTime = regTimer.Elapsed.TotalMilliseconds,
+					ResolveTime = resolveTimer.Elapsed.TotalMilliseconds
+				};
 		}
 	}
 }
